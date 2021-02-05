@@ -1,5 +1,11 @@
 # vbalien's yabai status bar
 
+## Install
+
+```sh
+$ git clone https://github.com/vbalien/vbalien-yabai-statusbar.git $HOME/Library/Application\ Support/Übersicht/widgets/vbalien
+```
+
 ## Preview
 
 ![preview](./assets/preview.png)
