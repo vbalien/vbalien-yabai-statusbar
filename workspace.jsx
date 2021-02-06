@@ -1,4 +1,4 @@
-import { css } from "uebersicht";
+import { css, run } from "uebersicht";
 
 const wrap = css({ display: "flex" });
 const box = css({
@@ -20,10 +20,13 @@ export const command = `./vbalien/scripts/workspace.sh`;
 export const refreshFrequency = false; // ms
 
 const WSBox = ({ focused, index, label }) => {
+  const onClick = () => run(`/usr/local/bin/yabai -m space --focus ${index}`);
   return focused ? (
-    <div className={boxFocused}>{label}&nbsp;</div>
+    <div className={boxFocused} onClick={onClick}>
+      {label}&nbsp;
+    </div>
   ) : (
-    <div className={box}>
+    <div className={box} onClick={onClick}>
       {label}
       {" :"}
       {index}
@@ -32,7 +35,12 @@ const WSBox = ({ focused, index, label }) => {
 };
 
 export const render = ({ output }) => {
-  output = JSON.parse(output);
+  try {
+    output = JSON.parse(output);
+  } catch (err) {
+    console.log(err.message);
+    return;
+  }
   return (
     <div>
       <div className={wrap}>

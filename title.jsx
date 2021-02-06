@@ -3,7 +3,12 @@ export const command = `./vbalien/scripts/title.sh`;
 export const refreshFrequency = false; // ms
 
 export const render = ({ output }) => {
-  output = JSON.parse(output);
+  try {
+    output = JSON.parse(output);
+  } catch (err) {
+    console.log(err.message);
+    return;
+  }
   return <div>{output.title}</div>;
 };
 

@@ -22,7 +22,12 @@ function getBatteryIcon(batt) {
 export const refreshFrequency = 10000; // ms
 
 export const render = ({ output }) => {
-  output = JSON.parse(output);
+  try {
+    output = JSON.parse(output);
+  } catch (err) {
+    console.log(err.message);
+    return;
+  }
   return (
     <div>
       <div className={wrap}>
