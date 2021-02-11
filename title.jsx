@@ -1,6 +1,18 @@
+import { css } from "uebersicht";
+
 export const command = `./vbalien/scripts/title.sh`;
 
 export const refreshFrequency = false; // ms
+
+const wrap = css({
+  maxWidth: "40%",
+  margin: "auto",
+  overflow: "hidden",
+  maxHeight: "30px",
+  overflow: "hidden",
+  whiteSpace: "nowrap",
+  textOverflow: "ellipsis",
+});
 
 export const render = ({ output }) => {
   try {
@@ -9,7 +21,11 @@ export const render = ({ output }) => {
     console.log(err.message);
     return;
   }
-  return <div>{output.title}</div>;
+  return (
+    <div>
+      <div className={wrap}>{output.title}</div>
+    </div>
+  );
 };
 
 export const className = {

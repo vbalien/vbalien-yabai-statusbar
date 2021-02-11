@@ -9,13 +9,13 @@ const box = css({
 
 function getBatteryIcon(batt) {
   if (batt.state === "AC") {
-    return "";
+    return <i> </i>;
   } else {
-    if (batt.percent <= 90) return "";
-    else if (batt.percent <= 70) return "";
-    else if (batt.percent <= 50) return "";
-    else if (batt.percent <= 30) return "";
-    else if (batt.percent <= 10) return "";
+    if (batt.percent >= 80) return <i>"&nbsp;</i>;
+    else if (batt.percent >= 60) return <i> &nbsp;</i>;
+    else if (batt.percent >= 40) return <i> &nbsp;</i>;
+    else if (batt.percent >= 20) return <i> &nbsp;</i>;
+    else if (batt.percent >= 0) return <i> &nbsp;</i>;
   }
 }
 
@@ -38,7 +38,7 @@ export const render = ({ output }) => {
           {output.time}
         </div>
         <div className={box}>
-          {`${getBatteryIcon(output.battery)} `}
+          {getBatteryIcon(output.battery)}
           {output.battery.percent}%
         </div>
       </div>

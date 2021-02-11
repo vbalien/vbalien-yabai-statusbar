@@ -2,7 +2,7 @@ import { css, run } from "uebersicht";
 
 const wrap = css({ display: "flex" });
 const box = css({
-  padding: "5px 15px",
+  padding: "5px 20px",
 });
 const osName = css({
   padding: "5px",
